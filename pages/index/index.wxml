@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+
+  </view>
+  <view class="user-text-wapper">
+    <text class="user-text">这是给老衲写的小程序首页</text>
+  </view>
+  <view class="page-section page-section-spacing swiper">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
+      snap-to-edge="{{snaptoedge}}" circular="={{circular}}">
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <!-- <view class="swiper-item {{item}}"></view> -->
+          <image src="{{item.url}}" alt="图片" class="swiper-item" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="menu">
+    <block wx:for="{{menuList}}" wx:key="*this">
+      <view class="menu-item">
+        <image class="menu-item-image"></image>
+        <text>{{item}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="goods">
+    <block wx:for="{{goodsList}}" wx:key="*this">
+      <view class="goods-item">
+        <image class="goods-item-image" src="{{item.url}}"></image>
+        <text>{{item.name}}</text>
+      </view>
+
+    </block>
+  </view>
+  <!-- <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+     <button class="my-button"  bindtap="clickHandle">点击我</button>
+  </view> -->
+</view>
